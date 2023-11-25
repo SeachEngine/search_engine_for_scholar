@@ -13,8 +13,43 @@
 
 .search_bar{
     height: 500px;
+    width: 100%;
     display: flex;
     justify-content: center; 
     align-items: center;
-    color:blue;
 }
+
+.input_section{
+    padding: 10px;
+    border-radius: 25px;
+    height: 40px;
+    width:500px;
+    color:black;
+    outline-color: blue;
+}
+
+.search_button{
+    border-radius: 25px;
+    height: 40px;
+    width: 100px;
+    color:blue;
+    background: white;
+}
+
+.search_button:hover{
+    color: white;
+    background: blue;
+}
+
+footer{
+    color:black;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+a:link {
+    text-decoration: none;
+  }
