@@ -52,4 +52,12 @@ footer{
 
 a:link {
     text-decoration: none;
-  }
+}
+
+.result_card{
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
