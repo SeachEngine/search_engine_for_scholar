@@ -1,8 +1,10 @@
 <?php
 include("connection.php");
 if(isset($_GET["submit"])){
-    $sql="SELECT * FROM article_listing_google_scholar_data_mining";
+    $key=$_GET["search_key"];
+    $sql="SELECT * FROM article_listing_google_scholar_data_mining where Title like '%$key%' or Author like '%$key%' or Description like '%$key%'";
     $res=mysqli_query($con,$sql);
+    $row=mysqli_num_rows($res);
 }
 ?>
 <!DOCTYPE html>
@@ -28,6 +30,7 @@ if(isset($_GET["submit"])){
   
 
 <?php
+    echo "Result Generated ".$row;
     while($result=mysqli_fetch_array($res)){
     ?>
     <div class="card">
