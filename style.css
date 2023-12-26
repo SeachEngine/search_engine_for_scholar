@@ -4,6 +4,7 @@
     color: white;
 }
 
+/* ****************** Index Page Css *************************** */
 .signupLoginList{
     list-style-type: none;
     display: flex;
@@ -12,7 +13,7 @@
 
 
 .search_bar{
-    height: 500px;
+    height: 78vh;
     width: 100%;
     display: flex;
     justify-content: center; 
@@ -23,7 +24,7 @@
     padding: 10px;
     border-radius: 25px;
     height: 40px;
-    width:500px;
+    width:50vw;
     color:black;
     outline-color: blue;
 }
@@ -54,10 +55,79 @@ a:link {
     text-decoration: none;
 }
 
+
+/* *************************** Result Page Css ****************************** */
+
 .result_card{
     height: 100%;
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.create-account-container{
+    padding: 10px;
+}
+
+/* ******************** Profile Page & Change Password Page Css ***************************** */
+
+.profile_div{
+    margin: 40px;
+    width: 94vw;
+    height: 78vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.account_div{
+    color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 40px;
+}
+
+.account_div p{
+    margin: 25px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#profile_pic{
+    max-width: 65px;
+    border: 1px solid blue;
+    border-radius: 30px;
+    
+}
+
+.header{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.logout_btn input{
+    color: blue;
+    padding: 5px 12px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.logout_btn :hover{
+    background-color: blue;
+    color: white;
+}
+
+/* ****************** Additional Change Password Page ************************ */
+
+.label{
+    color: black;
+}
+
+.pas_input{
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid black;
 }
