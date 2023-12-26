@@ -1,10 +1,17 @@
 <?php
+session_start();
 include("connection.php");
 if(isset($_GET["submit"])){
     $key=$_GET["search_key"];
-    $sql="SELECT * FROM article_listing_google_scholar_data_mining where Title like '%$key%' or Author like '%$key%' or Description like '%$key%'";
+    if(isset($_SESSION['name'])){
+      $email=$_SESSION['email'];
+      $sql="insert into history(tag,email) values('$key','$email')";
+      $res=mysqli_query($con,$sql);      
+    }
+    $sql="SELECT * FROM articles where title like '%$key%' or tag like '%$key%' or Description like '%$key%' or link like '%$key%' or author_name like '%$key%'";
     $res=mysqli_query($con,$sql);
     $row=mysqli_num_rows($res);
+   
 }
 ?>
 <!DOCTYPE html>
@@ -24,26 +31,40 @@ if(isset($_GET["submit"])){
                 <img src="./Assets/logo.png" alt="Logo" width="55" height="30">
                 NextScholar
             </a>
-          <ul class = "signupLoginList">
-            <li><a class="nav-link" href="#">Login</a></li>
+            <ul class = "signupLoginList">
+            <?php
+              if(isset($_SESSION['name'])){
+            ?>
+            <li><a class="nav-link" href="profile.php"><?php
+            echo $_SESSION['name'];
+            ?>
+            </a></li>
+            <?php
+              }else{
+            ?>
+            <li><a class="nav-link" href="logIn.php">Login</a></li>
+            <?php
+              }
+            ?>
           </ul>
         </div>
     </nav>
   
 
 <?php
-    echo "Result Generated ".$row;
+    echo $row." results found";
     while($result=mysqli_fetch_array($res)){
     ?>
     <div class="card">
-  <h5 class="card-header"><?php echo $result['Title']; ?></h5>
+  <h5 class="card-header"><?php echo $result['title']; ?></h5>
   <div class="card-body">
-    <h5 class="card-title"><?php echo $result['Author']; ?></h5>
-    <p class="card-text"><?php echo $result['Description']; ?></p>
-    <a href=<?php  echo $result['Article_Link']; ?> class="btn btn-primary">Visit For More Details</a>
+    <h5 class="card-title"><?php echo $result['author_name']; ?></h5>
+    <p class="card-text text-success"><?php echo $result['description']; ?></p>
+    <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
   </div>
 </div>
     <?php
+   
     }
     ?>
     <script src="script.js"></script>

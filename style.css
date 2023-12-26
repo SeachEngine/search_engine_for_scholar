@@ -109,15 +109,16 @@ a:link {
 }
 
 .logout_btn input{
-    color: blue;
+    background-color: blue;
+    color: white;
     padding: 5px 12px;
     border: 1px solid black;
     border-radius: 10px;
 }
 
 .logout_btn :hover{
-    background-color: blue;
-    color: white;
+    background-color: white;
+    color: blue;
 }
 
 /* ****************** Additional Change Password Page ************************ */
@@ -129,5 +130,6 @@ a:link {
 .pas_input{
     padding: 4px;
     border-radius: 10px;
-    border: 1px solid black;
+    color: black;
+    /* border: 1px solid black; */
 }

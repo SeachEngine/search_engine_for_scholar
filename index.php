@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +15,25 @@
 <body>
     <nav class="navbar bg-primary">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.php">
             <img src="./Assets/logo.png" alt="Logo" width="55" height="30">
             NextScholar
           </a>
           <ul class = "signupLoginList">
-            <li><a class="nav-link" href="logIn.html">Login</a></li>
+            <?php
+              if(isset($_SESSION['name'])){
+            ?>
+            <li><a class="nav-link" href="profile.php"><?php
+            echo $_SESSION['name'];
+            ?>
+            </a></li>
+            <?php
+              }else{
+            ?>
+            <li><a class="nav-link" href="logIn.php">Login</a></li>
+            <?php
+              }
+            ?>
           </ul>
         </div>
     </nav>
@@ -29,8 +46,8 @@
     <footer>
       <hr>
       <div class="footer">
-        <a href="index.html">Home</a>
-        <a href="#">About Us</a>
+        <a href="index.php">Home</a>
+        <a href="aboutus.html">About Us</a>
       </div>
     </footer>
 

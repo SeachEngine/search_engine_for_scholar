@@ -1,3 +1,15 @@
+<?php
+session_start();
+include("connection.php");
+if(!isset($_SESSION['name'])){
+  header("location:index.php");
+}else{
+    $email=$_SESSION['email'];
+    $sql="select * from history where email='$email' order by time desc";
+    $res=mysqli_query($con,$sql);
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +25,52 @@
     
     <nav class="navbar bg-primary">
         <div class="container">
-          <a class="navbar-brand text-white" href="index.html">
+          <a class="navbar-brand text-white" href="index.php">
             <img src="./Assets/logo.png" alt="Logo" width="55" height="30">
             NextScholar
           </a>
           <ul class = "signupLoginList">
-            <li><a class="nav-link" href="logIn.html">Login</a></li>
-            <li><a class="nav-link" href="#">History</a></li>
+            <li><a class="nav-link" href="profile.php"> <?php
+              echo $_SESSION['name'];
+            ?></a></li>
+            <li><a class="nav-link" href="index.php">Home</a></li>
           </ul>
         </div>
     </nav>
+    <table class="table table-primary table-striped-columns">
+    <thead>
+      <tr>
+        <th>Tag</th>
+        <th>Timestamp</th>
+      </tr>  
+    </thead>
+    <tbody>
+    <?php
+    while($result=mysqli_fetch_array($res)){
+    ?>
+   <tr>
+    <td>
+        <?php
+        echo $result['tag'];
+        ?>
+
+    </td>
+    <td>
+    <?php
+        echo $result['time'];
+        ?>
+    </td>
+   </tr>
+    <?php
+        }
+    ?>
+    </tbody>
     
-    <div class="profile_div">
-        <div class="account_div">
-            <p class="header">User Account Details</p>
-            <p><img src="./Assets/logo.png" alt="" id="profile_pic"></p>
-            <p>Name: Nimai Barman</p>
-            <p>Email: nimaibarman4979@gmail.com</p>
-            <p><a href="changePassword.html">Change Password</a></p>
-            <p class="logout_btn"><input type="submit" value="Log Out" name="submit" ></p>
-
-        </div>
-    </div>
-
-
+    </table>
+<?php
+    
+}
+?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
