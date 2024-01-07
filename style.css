@@ -33,13 +33,13 @@
     border-radius: 25px;
     height: 40px;
     width: 100px;
-    color:blue;
-    background: white;
+    color:white;
+    background: blue;
 }
 
 .search_button:hover{
-    color: white;
-    background: blue;
+    color: blue;
+    background: white;
 }
 
 footer{
