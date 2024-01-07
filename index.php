@@ -39,7 +39,7 @@ session_start();
     </nav>
 
     <form class="search_bar" action="result.php" method="get">
-        <input type="text" name="search_key" id=""class="input_section">
+        <input type="text" name="search_key" id=""class="input_section" required>
         <input type="submit" value="Search" name="submit" id="" class="search_button">
     </form>
 

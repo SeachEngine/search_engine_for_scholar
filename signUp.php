@@ -55,7 +55,7 @@ if($res){
                 <input type="text" id="fullName" name="name" required>
 
                 <label for="dob">Date of Birth:</label>
-                <input type="text" id="dob" name="dob" required placeholder="YYYY-MM-DD">
+                <input type="date" id="dob" name="dob" required >
 
                 <label for="address">Address:</label>
                 <input type="text" id="address" name="add" required placeholder="Street, City, Country">

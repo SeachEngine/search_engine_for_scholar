@@ -63,11 +63,11 @@ if(isset($_POST['submit'])){
             <form action="changePassword.php" method="post">
             <p>
                 <label for="cur_pas" class="label">Current Password:</label>
-                <input type="text" name="cur_pas"  class="pas_input">
+                <input type="Password" name="cur_pas"  class="pas_input">
             </p>
             <p>
                 <label for="new_pas" class="label">New Password</label>
-                <input type="text" name="new_pas"  class="pas_input">
+                <input type="password" name="new_pas"  class="pas_input">
             </p>
             <p class="logout_btn"><input type="submit" value="Change Password" name="submit" ></p>
             </form>

@@ -27,7 +27,7 @@ if(isset($_GET["submit"])){
 <body>
     <nav class="navbar bg-primary">
         <div class="container">
-            <a class="navbar-brand text-white" href="index.html">
+            <a class="navbar-brand text-white" href="index.php">
                 <img src="./Assets/logo.png" alt="Logo" width="55" height="30">
                 NextScholar
             </a>
