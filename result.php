@@ -51,18 +51,48 @@ if(isset($_GET["submit"])){
     </nav>
   
 
-<?php
-    echo $row." results found";
-    while($result=mysqli_fetch_array($res)){
+    <div class="result-header">
+      <div>
+        <?php
+          echo $row." results found";  
+        ?>
+      </div>
+
+      <div class="sortby">
+        <label for="sortby">Sort By</label>
+        <select name="sortby" id="">
+          <option value="">Select</option>
+          <option value="accending">Accending</option>
+          <option value="decending">Decending</option>
+        </select>
+      </div>
+
+      <div class="filter">
+        <label for="filter">Filter</label>
+        <select name="filter" id="">
+          <option value="">Select Publication Year</option>
+          <option value="2010">2010</option>
+          <option value="2013">2013</option>
+
+        </select>
+      </div>
+
+
+    </div>
+    <?php
+      while($result=mysqli_fetch_array($res)){
     ?>
     <div class="card">
-  <h5 class="card-header"><?php echo $result['title']; ?></h5>
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $result['author_name']; ?></h5>
-    <p class="card-text text-success"><?php echo $result['description']; ?></p>
-    <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
-  </div>
-</div>
+      <h5 class="card-header"><?php echo $result['title']; ?></h5>
+      <div class="card-body">
+        <h5 class="card-title"><?php echo $result['author_name']; ?></h5>
+        <p class="card-text text-success"><?php echo $result['description']; ?></p>
+        <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
+
+        <input type="submit" name="submit" value='Save Article' id="">
+      </div>
+    </div>
+    
     <?php
    
     }

@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     $sql="update scholar set pass='$new' where email='$email'";
     $res=mysqli_query($con,$sql);
     if($res){
-        echo "<script> alert('password changes'); </script>";
+        echo "<script> alert('Password Changed Successfully.'); </script>";
         // header("location:profile.php");
     }else{
         echo "<script> alert('password not changed');".mysqli_error($con)." </script>";
