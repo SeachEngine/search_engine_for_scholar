@@ -39,8 +39,18 @@ session_start();
     </nav>
 
     <form class="search_bar" action="result.php" method="get">
+      <div></div>
+      <div></div>
+      <h1>
+        Next Scholar
+      </h1>
+      <div>
         <input type="text" name="search_key" id=""class="input_section" required>
         <input type="submit" value="Search" name="submit" id="" class="search_button">
+      </div>
+      <div></div>
+      <div></div>
+      <div></div>
     </form>
 
     <footer>
