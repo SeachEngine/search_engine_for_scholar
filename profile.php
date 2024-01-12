@@ -30,6 +30,7 @@ if(!isset($_SESSION['name'])){
             ?></a></li>
             <li><a class="nav-link" href="history.php">History</a></li>
             <li><a class="nav-link" href="index.php">Home</a></li>
+            <li><a class="nav-link" href="saved.php">Saved Article</a></li>
           </ul>
         </div>
     </nav>
