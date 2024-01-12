@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("connection.php");
+$res=null;
 if(isset($_GET["submit"])){
     $key=$_GET["search_key"];
     if(isset($_SESSION['name'])){
@@ -12,6 +13,24 @@ if(isset($_GET["submit"])){
     $res=mysqli_query($con,$sql);
     $row=mysqli_num_rows($res);
    
+}
+if(isset($_GET["sub"])){
+  $key=$_GET["search_key"];
+  $order=null;
+  $filter=null;
+  $sql="SELECT * FROM articles where (title like '%$key%' or tag like '%$key%' or Description like '%$key%' or link like '%$key%' or author_name like '%$key%')";
+  if($_GET["filter"]!=""){
+    $filter=$_GET["filter"];
+    $sql=$sql."and author_name='$filter'";
+  }
+  if($_GET["sortby"]!=""){
+    $order=$_GET["sortby"];
+    $sql=$sql." order by title $order";
+  }
+  
+  $res=mysqli_query($con,$sql);
+  $row=mysqli_num_rows($res);
+
 }
 ?>
 <!DOCTYPE html>
@@ -50,8 +69,12 @@ if(isset($_GET["submit"])){
         </div>
     </nav>
   
-
-    <div class="result-header">
+<form action="" method="get">
+<input type="text" name="search_key" id=""class="input_section i-section" required value=<?php echo $_GET["search_key"]; 
+ 
+?>>
+<input type="submit" value="Search" name="sub" id="" class="search_button s-btn">
+<div class="result-header">
       <div>
         <?php
           echo $row." results found";  
@@ -62,34 +85,56 @@ if(isset($_GET["submit"])){
         <label for="sortby">Sort By</label>
         <select name="sortby" id="">
           <option value="">Select</option>
-          <option value="accending">Accending</option>
-          <option value="decending">Decending</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </div>
 
       <div class="filter">
         <label for="filter">Filter</label>
+        <?php
+        $sql="select author_name from articles";
+        $response=mysqli_query($con,$sql);
+
+        ?>
         <select name="filter" id="">
-          <option value="">Select Publication Year</option>
-          <option value="2010">2010</option>
-          <option value="2013">2013</option>
+          <option value="">Select Author Name</option>
+          <?php
+          while($result=mysqli_fetch_array($response)){
+          ?>
+          
+          <option value=<?php echo $result['author_name']; ?>><?php echo $result['author_name']; ?></option>
+           <?php
+               }
+           ?>
+
+       on>
 
         </select>
       </div>
 
+</form>
+  
 
     </div>
     <?php
       while($result=mysqli_fetch_array($res)){
     ?>
     <div class="card">
-      <h5 class="card-header"><?php echo $result['title']; ?></h5>
+      <h5 class="card-header">Title :<?php echo $result['title']; ?></h5>
       <div class="card-body">
-        <h5 class="card-title"><?php echo $result['author_name']; ?></h5>
-        <p class="card-text text-success"><?php echo $result['description']; ?></p>
+        <h5 class="card-title">Author Name :<?php echo $result['author_name']; ?></h5>
+        <p class="card-text text-success">Description :<?php echo $result['description']; ?></p>
         <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
-
-        <input type="submit" name="submit" value='Save Article' id="">
+        <?php
+        if(isset($_SESSION['name'])){
+        ?>
+        <form action="saved.php?id=<?php echo $result['article_id'];  ?>" method="post">
+        <input type="submit" name="save" value='Save Article' id="">
+        </form>
+        <?php
+        }
+        ?>
       </div>
     </div>
     

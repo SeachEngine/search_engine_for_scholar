@@ -27,7 +27,12 @@
     width:50vw;
     color:black;
 }
-
+.i-section{
+    border-radius: 2rem;
+    width: 90%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .search_button{
     border-radius: 25px;
     height: 40px;
