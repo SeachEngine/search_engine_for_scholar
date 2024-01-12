@@ -129,7 +129,7 @@ if(isset($_GET["sub"])){
         <?php
         if(isset($_SESSION['name'])){
         ?>
-        <form action="saved.php?id=<?php echo $result['article_id'];  ?>" method="post">
+        <form action="saved.php?id=<?php echo $result['article_id'];  ?>" method="post" class="mt-2">
         <input type="submit" name="save" value='Save Article' id="">
         </form>
         <?php
