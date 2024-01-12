@@ -4,7 +4,7 @@ include("connection.php");
 if(isset($_POST['save'])){
     $article_id=$_GET['id'];
     $email=$_SESSION['email'];
-    $sql="insert into saved values('$article_id','$email')";
+    $sql="insert into saved(article_id,email) values('$article_id','$email')";
     $res=mysqli_query($con,$sql);
     echo "<script> alert('Article Saved Successfully') </script>";
 }
@@ -57,7 +57,9 @@ if(isset($_POST['save'])){
         <h5 class="card-title">Author Name :<?php echo $result['author_name']; ?></h5>
         <p class="card-text text-success">Description :<?php echo $result['description']; ?></p>
         <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
-        
+        <form action="remove.php?id=<?php echo $result['save_id'];  ?>" method="post" class="mt-2">
+        <input type="submit" name="remove" value='Remove Article' id="">
+        </form>
       </div>
     </div>
     <?php
