@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2024 at 05:34 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Jan 13, 2024 at 06:13 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE `articles` (
   `description` text DEFAULT NULL,
   `link` varchar(255) DEFAULT NULL,
   `author_name` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `articles`
@@ -78,15 +78,65 @@ CREATE TABLE `history` (
   `email` varchar(50) DEFAULT NULL,
   `hid` int(10) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `history`
 --
 
 INSERT INTO `history` (`tag`, `email`, `hid`, `time`) VALUES
-('sport science', 'ajeetkumarr468@gmail.com', 38, '2024-01-12 04:30:41'),
-('sport science', 'ajeetkumarr468@gmail.com', 39, '2024-01-12 04:30:59');
+('dbms', 'nejarulislam45@gmail.com', 1, '2023-12-26 15:08:37'),
+('dbms', 'nejarulislam45@gmail.com', 2, '2023-12-26 15:09:51'),
+('dbms', 'nejarulislam45@gmail.com', 3, '2023-12-26 15:21:11'),
+('data ', 'nejarulislam45@gmail.com', 4, '2023-12-26 15:22:27'),
+('what is dbms?', 'nejarulislam45@gmail.com', 5, '2023-12-26 15:27:17'),
+('what is database', 'nimai4938@gmail.com', 6, '2023-12-26 15:30:03'),
+('dbms', 'nejarulislam45@gmail.com', 7, '2024-01-12 18:06:37'),
+('dbms', 'nejarulislam45@gmail.com', 8, '2024-01-12 18:15:38'),
+('dbms', 'nejarulislam45@gmail.com', 9, '2024-01-12 18:16:21'),
+('dbms', 'nejarulislam45@gmail.com', 10, '2024-01-12 18:16:31'),
+('dbms', 'nejarulislam45@gmail.com', 11, '2024-01-12 18:22:01'),
+('dbms', 'nejarulislam45@gmail.com', 12, '2024-01-12 18:24:24'),
+('dbms', 'nejarulislam45@gmail.com', 13, '2024-01-12 18:24:35'),
+('dbms', 'nejarulislam45@gmail.com', 14, '2024-01-12 18:25:25'),
+('dbms', 'nejarulislam45@gmail.com', 15, '2024-01-12 18:25:28'),
+('dbms', 'nejarulislam45@gmail.com', 16, '2024-01-12 18:26:31'),
+('dbms', 'nejarulislam45@gmail.com', 17, '2024-01-12 18:27:52'),
+('dbms', 'nejarulislam45@gmail.com', 18, '2024-01-12 18:31:14'),
+('dbms', 'nejarulislam45@gmail.com', 19, '2024-01-12 18:34:38'),
+('dbms', 'nejarulislam45@gmail.com', 20, '2024-01-12 18:34:51'),
+('dbms', 'nejarulislam45@gmail.com', 21, '2024-01-12 18:35:55'),
+('dbms', 'nejarulislam45@gmail.com', 22, '2024-01-12 18:35:58'),
+('requirement engineering', 'nimai4938@gmail.com', 23, '2024-01-12 18:43:52'),
+('dbms', 'nimai4938@gmail.com', 24, '2024-01-12 18:58:34'),
+('dbms', 'nimai4938@gmail.com', 25, '2024-01-12 18:59:07'),
+('requirement engineering', 'nimai4938@gmail.com', 26, '2024-01-12 19:06:32'),
+('requirement engineering', 'nimai4938@gmail.com', 27, '2024-01-12 19:07:08'),
+('requirement engineering', 'nimai4938@gmail.com', 28, '2024-01-12 19:08:45'),
+('requirement engineering', 'nimai4938@gmail.com', 29, '2024-01-12 19:08:46'),
+('dbms', 'nimai4938@gmail.com', 30, '2024-01-12 19:17:56'),
+('computer', 'nimai4938@gmail.com', 31, '2024-01-12 19:27:08'),
+('dbms', 'nimai4938@gmail.com', 32, '2024-01-12 19:30:58'),
+('dbms', 'nimai4938@gmail.com', 33, '2024-01-12 19:33:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `saved`
+--
+
+CREATE TABLE `saved` (
+  `article_id` int(5) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `save_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `saved`
+--
+
+INSERT INTO `saved` (`article_id`, `email`, `save_id`) VALUES
+(13, 'nimai4938@gmail.com', 5);
 
 -- --------------------------------------------------------
 
@@ -101,15 +151,16 @@ CREATE TABLE `scholar` (
   `email` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
   `qual` varchar(11) NOT NULL,
-  `pass` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pass` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `scholar`
 --
 
 INSERT INTO `scholar` (`id`, `name`, `dob`, `email`, `address`, `qual`, `pass`) VALUES
-(1, 'Ajeet Kumar', '2001-12-02', 'ajeetkumarr468@gmail.com', 'Kolkata', 'Btech', '67890');
+(13, 'Nejarul Islam', '1999-02-01', 'nejarulislam45@gmail.com', 'Murshidabad', 'Bsc Btech', '09876'),
+(14, 'Nimai Barman', '2000-01-01', 'nimai4938@gmail.com', 'Dinajpur', 'Bsc Btech', '09876');
 
 --
 -- Indexes for dumped tables
@@ -129,6 +180,14 @@ ALTER TABLE `history`
   ADD KEY `email` (`email`);
 
 --
+-- Indexes for table `saved`
+--
+ALTER TABLE `saved`
+  ADD PRIMARY KEY (`save_id`),
+  ADD KEY `article_id` (`article_id`),
+  ADD KEY `email` (`email`);
+
+--
 -- Indexes for table `scholar`
 --
 ALTER TABLE `scholar`
@@ -143,13 +202,19 @@ ALTER TABLE `scholar`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `hid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `hid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `saved`
+--
+ALTER TABLE `saved`
+  MODIFY `save_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `scholar`
 --
 ALTER TABLE `scholar`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -160,6 +225,13 @@ ALTER TABLE `scholar`
 --
 ALTER TABLE `history`
   ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`email`) REFERENCES `scholar` (`email`);
+
+--
+-- Constraints for table `saved`
+--
+ALTER TABLE `saved`
+  ADD CONSTRAINT `saved_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`),
+  ADD CONSTRAINT `saved_ibfk_2` FOREIGN KEY (`email`) REFERENCES `scholar` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
