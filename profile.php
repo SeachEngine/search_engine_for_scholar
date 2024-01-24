@@ -31,6 +31,7 @@ if(!isset($_SESSION['name'])){
             <li><a class="nav-link" href="history.php">History</a></li>
             <li><a class="nav-link" href="index.php">Home</a></li>
             <li><a class="nav-link" href="saved.php">Saved Article</a></li>
+            <li><a class="nav-link" href="article.php">My Articles</a></li>
           </ul>
         </div>
     </nav>
@@ -55,7 +56,7 @@ if(!isset($_SESSION['name'])){
             <input type="submit" value="Log Out" name="submit" >
             </a>    
             
-          
+            <p><a href="updateProfile.php">Update Profile</a></p>
           </p>
 
         </div>
