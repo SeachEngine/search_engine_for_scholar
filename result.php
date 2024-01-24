@@ -19,15 +19,18 @@ if(isset($_GET["sub"])){
   $order=null;
   $filter=null;
   $sql="SELECT * FROM articles where (title like '%$key%' or tag like '%$key%' or Description like '%$key%' or link like '%$key%' or author_name like '%$key%')";
-  if($_GET["filter"]!=""){
-    $filter=$_GET["filter"];
-    $sql=$sql."and author_name='$filter'";
+  if($_GET["type"]!=""){
+    $type=$_GET["type"];
+    $sql=$sql." and article_type='$type'";
+  }
+  if($_GET["yop"]!=""){
+    $yop=$_GET["yop"];
+    $sql=$sql." and yop=$yop";
   }
   if($_GET["sortby"]!=""){
     $order=$_GET["sortby"];
     $sql=$sql." order by title $order";
-  }
-  
+  }  
   $res=mysqli_query($con,$sql);
   $row=mysqli_num_rows($res);
 
@@ -92,21 +95,39 @@ if(isset($_GET["sub"])){
 
       <div class="filter">
         <label for="filter">Filter</label>
-        <?php
+        <!-- <?php
         $sql="select author_name from articles";
         $response=mysqli_query($con,$sql);
 
-        ?>
-        <select name="filter" id="">
-          <option value="">Select Author Name</option>
-          <?php
-          while($result=mysqli_fetch_array($response)){
-          ?>
+        ?> -->
+        <select name="type" id="">
+          <option value="">Select Paper Type</option>
+          <!-- <?php
+          // while($result=mysqli_fetch_array($response)){
+          ?> -->
           
-          <option value=<?php echo $result['author_name']; ?>><?php echo $result['author_name']; ?></option>
-           <?php
-               }
-           ?>
+          <option value="Journal Paper">Journal Paper</option>
+          <option value="Conferencing Paper">Conferencing Paper</option>
+
+           <!-- <?php
+              //  }
+           ?> -->
+
+       on>
+
+        </select>
+        <select name="yop" id="">
+          <option value="">Select Year of Publications</option>
+          <!-- <?php
+          // while($result=mysqli_fetch_array($response)){
+          ?> -->
+          
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+
+           <!-- <?php
+              //  }
+           ?> -->
 
        on>
 
@@ -121,10 +142,12 @@ if(isset($_GET["sub"])){
       while($result=mysqli_fetch_array($res)){
     ?>
     <div class="card">
-      <h5 class="card-header">Title :<?php echo $result['title']; ?></h5>
+      <h5 class="card-header">Paper Name :<?php echo $result['title']; ?></h5>
       <div class="card-body">
         <h5 class="card-title">Author Name :<?php echo $result['author_name']; ?></h5>
-        <p class="card-text text-success">Description :<?php echo $result['description']; ?></p>
+        <h5 class="card-title">Year of Publications :<?php echo $result['yop']; ?></h5>
+        <h5 class="card-title"> <?php echo $result['article_type']; ?></h5>
+        <p class="card-text text-success">Abstract :<?php echo $result['description']; ?></p>
         <a href=<?php  echo $result['link']; ?> class="btn btn-primary">Visit For More Details</a>
         <?php
         if(isset($_SESSION['name'])){
